@@ -45,6 +45,6 @@ public class ГеографическийКалькулятоор {
                         Math.sin(dLon / 2) * Math.sin(dLon / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        return ZEMLYA_RADIUS_KM;
+        return ZEMLYA_RADIUS_KM * с;
 }
 }
