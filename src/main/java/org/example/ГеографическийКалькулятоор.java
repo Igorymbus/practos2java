@@ -10,16 +10,14 @@ public class ГеографическийКалькулятоор {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введите координаты первой точки:");
-        double lat1 = Координаты ("Широта");
-        double lon1 = Координаты("Долгота");
-
+        double scpomps = Координаты ("Широта");
+        double kop = Координаты("Долгота");
         System.out.println("\nВведите координаты второй точки:");
-        double lat2 = Координаты("Широта");
-        double lon2 = Координаты("Долгота");
+        double pips = Координаты("Широта");
+        double pops = Координаты("Долгота");
+        double distance = Дистанция(scpomps, kop, pips, pops);
 
-        double distance = Дистанция(lat1, lon1, lat2, lon2);
-
-        System.out.printf("\nРасстояние между точками: %.2f км\n", distance);
+        System.out.printf(String.valueOf(distance));
 
         scanner.close();
     }
@@ -30,21 +28,21 @@ public class ГеографическийКалькулятоор {
         return scanner.nextDouble();
     }
 
-    private static double Дистанция (double lat1, double lon1, double lat2, double lon2) {
+    private static double Дистанция (double scpomps, double kop, double pips, double pops) {
 
-        lat1 = Math.toRadians(lat1);
-        lon1 = Math.toRadians(lon1);
-        lat2 = Math.toRadians(lat2);
-        lon2 = Math.toRadians(lon2);
+        scpomps = Math.toRadians(scpomps);
+        kop = Math.toRadians(kop);
+        pips = Math.toRadians(pips);
+        pops = Math.toRadians(pops);
 
-        double dLat = lat2 - lat1;
-        double dLon = lon2 - lon1;
+        double dLat = pips - scpomps;
+        double dLon = pops - kop;
 
         double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1) * Math.cos(lat2) *
+                Math.cos(scpomps) * Math.cos(pips) *
                         Math.sin(dLon / 2) * Math.sin(dLon / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        return ZEMLYA_RADIUS_KM * с;
+        return ZEMLYA_RADIUS_KM * c;
 }
 }
